@@ -1,16 +1,16 @@
-- [] INITIAL SETUP
-    - [] create file structure
+- [x] INITIAL SETUP
+    - [x] create file structure
         - [x] index.html
         - [x] style.css
         - [x] server.js
         - [x] client.js
-        - [] npm init
-        - [] install express
-        - [] install jQuery
-        - [] source all relevant files to index.html
+        - [x] npm init
+        - [x] install express
+        - [x] install jQuery
+        - [x] source all relevant files to index.html
 
 - [] HTML
-    - [] header with title
+    - [x] header with title
     - [] 2 inputs for number values
     - [] a way to select the mathematical operator
     - [] a submit / `=` button
