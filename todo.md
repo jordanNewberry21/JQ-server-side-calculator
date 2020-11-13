@@ -9,12 +9,12 @@
         - [x] install jQuery
         - [x] source all relevant files to index.html
 
-- [] HTML
+- [x] HTML
     - [x] header with title
-    - [] 2 inputs for number values
-    - [] a way to select the mathematical operator
-    - [] a submit / `=` button
-    - [] also a C / clear button to clear inputs
+    - [x] 2 inputs for number values
+    - [x] a way to select the mathematical operator
+    - [x] a submit / `=` button
+    - [x] also a C / clear button to clear inputs
 
 
 - [] CSS
