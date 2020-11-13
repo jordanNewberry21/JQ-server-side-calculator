@@ -30,7 +30,7 @@
 
 
 - [] CLIENT
-    - [] When the `=` button is clicked capture the inputs
-    - [] store inputs in an object to send to the server via POST
+    - [x] When the `=` button is clicked capture the inputs
+    - [x] store inputs in an object to send to the server via POST
     - [] Display a list of all the previous calculations
     - [] update display list when a new calculation is made
