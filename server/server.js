@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 5000;
-// array to store my solutions
+// array to store my solutions and operations
 const solutionArray = [];
 const mathArray = [];
 // static file locations
@@ -13,20 +13,52 @@ app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 // GET and POST routes go here
-app.get('/calculation', (req, res) => {
+app.get('/calculation', (req, res) => { // get route to send the calculations
     console.log('Sending calculation data...');
     res.send(mathArray);
 })
 
-app.post('/calculation', (req, res) => {
+app.get('/solution', (req, res) => { // get route to send the calculations
+    console.log('Sending calculation data...');
+    res.send(solutionArray);
+})
+
+app.post('/calculation', (req, res) => { // post route to receive the calculations
     let calcData = req.body
     console.log('Getting calc data from client...', calcData);
     mathArray.push(calcData);
-    let solution = doTheMath(calcData);
+    doTheMath(calcData); // calling math function here with data from client
     res.sendStatus(200);
 })
 
+function doTheMath (calculation) {
+    // assigning the data object values 
+    // to variables to make the math look easier
+    let x = Number(calculation.firstNumber);
+    let y = Number(calculation.secondNumber);
+    let operation = calculation.operator;
+    let result;
 
+    // using a switch statement to account for the different
+    // math operators
+    switch (operation) {
+        case '+':
+            result = x + y;
+            break;
+        case '-':
+            result = x - y;
+            break;
+        case '*':
+            result = x * y;
+            break;
+        case '/':
+            result = x / y;
+            break;
+    }
+    console.log('the result is...', result);
+    solutionArray.push(result);
+    return result;
+}
 
 
 

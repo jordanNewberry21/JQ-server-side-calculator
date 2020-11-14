@@ -91,7 +91,7 @@ function renderData (array) {
     for (let item of array) {
         $('#mathSpot').append(`
         <li>
-        ${item.firstNumber} ${item.operator} ${item.secondNumber}
+        ${item.firstNumber} ${item.operator} ${item.secondNumber} = ${item}
         </li>`)
     }
     console.log('Solutions are...', array);
