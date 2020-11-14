@@ -22,15 +22,17 @@
 
 
 - [] SERVER
-    - [] Keep a record of all math operations and solutions on the server
-    - [] The server must do the calculations
-    - [] it should handle addition, subtraction, multiplication, and division.
-    - [] once the calculation is complete, send back the OK
+    - [x] Keep a record of all math operations and solutions on the server
+    - [x] The server must do the calculations
+    - [x] it should handle addition, subtraction, multiplication, and division.
+    - [x] once the calculation is complete, send back the OK
     - [] do a GET request after the POST to send back the result of the calculation.
 
 
 - [] CLIENT
+    - [] create a delete button that deletes the servers calculation data
+    - [x] add a 'Clear' button that clears the inputs
     - [x] When the `=` button is clicked capture the inputs
     - [x] store inputs in an object to send to the server via POST
-    - [] Display a list of all the previous calculations
-    - [] update display list when a new calculation is made
+    - [x] Display a list of all the previous calculations
+    - [x] update display list when a new calculation is made

@@ -15,7 +15,6 @@ console.log('Client.js is loaded...')
 $(document).ready(readyNow);
 
 function readyNow () {
-    getData();
     console.log('JQ is loaded...');
     $('#add').on('click', add);
     $('#subtract').on('click', subtract);
@@ -26,6 +25,9 @@ function readyNow () {
 }
 
 function handleClear () {
+    $('#firstNumber').val('');
+    operator = '';
+    $('#secondNumber').val('');
     console.log('in clear button');
 }
 // functions to change the operator value based on the button being clicked
@@ -57,6 +59,7 @@ function handleData (data) {
 }
 
 function sendDataToSever (data) {
+    if ($('#firstNumber').val() == '' )
     $.ajax({
         method: 'POST',
         url: '/calculation',
@@ -66,11 +69,36 @@ function sendDataToSever (data) {
         $('#firstNumber').val('');
         $('#secondNumber').val('');
         getData();
+        // getSolution();
     }).catch(function (error) {
         console.log('Error...', error);
         alert('Something went wrong, please try again.')
     })
 }
+
+// function getSolution () {
+//     $.ajax({
+//         method: 'GET',
+//         url: '/solution'
+//     }).then(function (response) {
+//         console.log('Got response', response);
+//         renderSolution(response);
+//     }).catch(function (error) {
+//         console.log('Error', error);
+//         alert('Something went wrong, please try again.');
+//     });
+// }
+
+// function renderSolution (array) {
+//     $('#answerSpot').empty();
+//     for (let item of array) {
+//         $('#answerSpot').append(`
+//         <p>
+//         ${item}
+//         </p>`)
+//     }
+//     console.log('Solutions are...', array);
+// }
 
 function getData () {
     $.ajax({
@@ -81,19 +109,21 @@ function getData () {
         renderData(response);
     }).catch(function (error) {
         console.log('Error', error);
-        alert('Something went wrong, please try again.')
+        alert('Something went wrong, please try again.');
     })
     console.log('End of getData...');
 }
 
 function renderData (array) {
+    $('#answerSpot').empty();
     $('#mathSpot').empty();
     for (let item of array) {
         $('#mathSpot').append(`
         <li>
-        ${item.firstNumber} ${item.operator} ${item.secondNumber} = ${item}
-        </li>`)
+        ${item.firstNumber} ${item.operator} ${item.secondNumber} = ${item.result}
+        </li>`);
+        $('#answerSpot').append(`<p>${item.result}</p>`)
     }
-    console.log('Solutions are...', array);
+    console.log('Equations are...', array);
 
 }
