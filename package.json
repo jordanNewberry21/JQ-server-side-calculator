@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jordanNewberry21/JQ-server-side-calculator#readme",
   "dependencies": {
+    "bootstrap": "^4.5.3",
     "express": "^4.17.1",
     "jquery": "^3.5.1"
   }
