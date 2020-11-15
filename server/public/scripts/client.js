@@ -59,7 +59,9 @@ function handleData (data) {
 }
 
 function sendDataToSever (data) {
-    if ($('#firstNumber').val() == '' )
+    if ($('#firstNumber').val() == '' || operator == '' || $('#secondNumber').val() == '') {
+        alert('Please fill in all fields! Choose an operator if you haven\'t already!')
+    } else {
     $.ajax({
         method: 'POST',
         url: '/calculation',
@@ -67,6 +69,7 @@ function sendDataToSever (data) {
     }).then(function (response) {
         console.log('back from server...');
         $('#firstNumber').val('');
+        operator = '';
         $('#secondNumber').val('');
         getData();
         // getSolution();
@@ -74,31 +77,10 @@ function sendDataToSever (data) {
         console.log('Error...', error);
         alert('Something went wrong, please try again.')
     })
+    }
 }
 
-// function getSolution () {
-//     $.ajax({
-//         method: 'GET',
-//         url: '/solution'
-//     }).then(function (response) {
-//         console.log('Got response', response);
-//         renderSolution(response);
-//     }).catch(function (error) {
-//         console.log('Error', error);
-//         alert('Something went wrong, please try again.');
-//     });
-// }
 
-// function renderSolution (array) {
-//     $('#answerSpot').empty();
-//     for (let item of array) {
-//         $('#answerSpot').append(`
-//         <p>
-//         ${item}
-//         </p>`)
-//     }
-//     console.log('Solutions are...', array);
-// }
 
 function getData () {
     $.ajax({
@@ -117,12 +99,12 @@ function getData () {
 function renderData (array) {
     $('#answerSpot').empty();
     $('#mathSpot').empty();
-    for (let item of array) {
+    $('#answerSpot').append(`<h2>${array[array.length-1].result}</h2>`)
+    for (let i=0; i<array.length; i++) {
         $('#mathSpot').append(`
         <li>
-        ${item.firstNumber} ${item.operator} ${item.secondNumber} = ${item.result}
+        ${array[i].firstNumber} ${array[i].operator} ${array[i].secondNumber} = ${array[i].result}
         </li>`);
-        $('#answerSpot').append(`<p>${item.result}</p>`)
     }
     console.log('Equations are...', array);
 

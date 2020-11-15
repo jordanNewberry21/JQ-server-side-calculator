@@ -22,14 +22,16 @@
 
 
 - [] SERVER
+    - [] might need to have the delete request over here too
     - [x] Keep a record of all math operations and solutions on the server
     - [x] The server must do the calculations
     - [x] it should handle addition, subtraction, multiplication, and division.
     - [x] once the calculation is complete, send back the OK
-    - [] do a GET request after the POST to send back the result of the calculation.
+    - [x] do a GET request after the POST to send back the result of the calculation.
 
 
 - [] CLIENT
+    - [] figure out how to allow the user to click on an old calculation to re-run it in the calculator
     - [] create a delete button that deletes the servers calculation data
     - [x] add a 'Clear' button that clears the inputs
     - [x] When the `=` button is clicked capture the inputs
