@@ -23,6 +23,16 @@ app.use(express.static('server/public'));
 // setting up bodyParser for data transfer
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+// Making a DELETE route
+
+app.delete('/calculation/:id', (req, res) => {
+    console.log("Deleting calculation data...");
+    mathArray.splice(req.params.id);
+    console.log(mathArray);
+    res.sendStatus(200);
+})
+
 // GET and POST routes go here
 
 // get route to send the calculations

@@ -22,6 +22,26 @@ function readyNow () {
     $('#divide').on('click', divide);
     $('#submitBtn').on('click', handleData);
     $('#clearBtn').on('click', handleClear);
+    $('#deleteDataBtn').on('click', deleteData);
+}
+
+function deleteData () {
+    console.log('in delete function');
+    confirm('Are you sure you want to delete your calculation history?');
+    if (confirm) {
+        $.ajax({
+            method: 'DELETE',
+            url: '/calculation/:id',
+        }).then( function (response) {
+            console.log('Back from server...', response);
+            alert('All previous calculations have been deleted. There is no history to show.');
+            $('#answerSpot').empty();
+            $('#mathSpot').empty();
+        }).catch( function (error) {
+            alert('Something went wrong, please try again.');
+            console.log('Error', error);
+        })
+    }
 }
 
 function handleClear () {
