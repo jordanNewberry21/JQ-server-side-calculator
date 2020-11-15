@@ -14,8 +14,9 @@ console.log('Client.js is loaded...')
 
 $(document).ready(readyNow);
 
-function readyNow () {
+function readyNow () { // click handlers live here
     console.log('JQ is loaded...');
+    getData();
     $('#add').on('click', add);
     $('#subtract').on('click', subtract);
     $('#multiply').on('click', multiply);
@@ -25,10 +26,10 @@ function readyNow () {
     $('#deleteDataBtn').on('click', deleteData);
 }
 
-function deleteData () {
+function deleteData () { // DELETE request function
     console.log('in delete function');
     confirm('Are you sure you want to delete your calculation history?');
-    if (confirm) {
+    if (confirm) { // must confirm before delete
         $.ajax({
             method: 'DELETE',
             url: '/calculation/:id',
@@ -44,7 +45,7 @@ function deleteData () {
     }
 }
 
-function handleClear () {
+function handleClear () { // clear input button function
     $('#firstNumber').val('');
     operator = '';
     $('#secondNumber').val('');
@@ -68,7 +69,7 @@ function divide () {
 }
 
 
-function handleData (data) {
+function handleData (data) { // making sure the data is stored properly before it's sent over
     console.log('Handling calculations...');
     calculation = {
         firstNumber: $('#firstNumber').val(),
@@ -78,14 +79,14 @@ function handleData (data) {
     sendDataToSever(data);
 }
 
-function sendDataToSever (data) {
+function sendDataToSever (data) { // sending data to server
     if ($('#firstNumber').val() == '' || operator == '' || $('#secondNumber').val() == '') {
         alert('Please fill in all fields! Choose an operator if you haven\'t already!')
-    } else {
-    $.ajax({
+    } else { // conditions above ensure all fields are filled in before anything is sent to the server
+    $.ajax({ // ajax POST request
         method: 'POST',
         url: '/calculation',
-        data: calculation
+        data: calculation //
     }).then(function (response) {
         console.log('back from server...');
         $('#firstNumber').val('');
@@ -102,8 +103,8 @@ function sendDataToSever (data) {
 
 
 
-function getData () {
-    $.ajax({
+function getData () { // run this function in readyNow to properly
+    $.ajax({          // display any remaining data on refresh
         method: 'GET',
         url: '/calculation'
     }).then(function (response) {
@@ -117,14 +118,16 @@ function getData () {
 }
 
 function renderData (array) {
-    $('#answerSpot').empty();
+    $('#answerSpot').empty(); // gotta empty before you append...
     $('#mathSpot').empty();
+    if (array.length != 0) { // had errors on page load, because it was trying to display an empty array.
     $('#answerSpot').append(`<h2>${array[array.length-1].result}</h2>`)
     for (let i=0; i<array.length; i++) {
         $('#mathSpot').append(`
         <li>
         ${array[i].firstNumber} ${array[i].operator} ${array[i].secondNumber} = ${array[i].result}
         </li>`);
+    }
     }
     console.log('Equations are...', array);
 

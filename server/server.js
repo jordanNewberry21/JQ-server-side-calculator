@@ -27,11 +27,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Making a DELETE route
 
 app.delete('/calculation/:id', (req, res) => {
-    console.log("Deleting calculation data...");
-    mathArray.splice(req.params.id);
-    console.log(mathArray);
-    res.sendStatus(200);
-})
+    console.log("Deleting calculation data...", req.params.id);
+    mathArray.splice(req.params.id); // I think this is working??
+    console.log(mathArray); 
+    res.sendStatus(200); // send back the OK
+}) // Well this delete request is working. I'm pretty sure. I have tested it several times, but I just
+// am not really sure how it knows what to delete. I know I'm doing .splice on my mathArray
+// and I console logged req.params.id but that didn't really tell me much either.
 
 // GET and POST routes go here
 

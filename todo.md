@@ -17,12 +17,12 @@
     - [x] also a C / clear button to clear inputs
 
 
-- [] CSS
-    - [] style the buttons / inputs to make it look like a calculator
+- [x] CSS
+    - [x] style the buttons / inputs to make it look like a calculator
 
 
-- [] SERVER
-    - [] might need to have the delete request over here too
+- [x] SERVER
+    - [x] might need to have the delete request over here too
     - [x] Keep a record of all math operations and solutions on the server
     - [x] The server must do the calculations
     - [x] it should handle addition, subtraction, multiplication, and division.
@@ -31,8 +31,8 @@
 
 
 - [] CLIENT
-    - [] figure out how to allow the user to click on an old calculation to re-run it in the calculator
-    - [] create a delete button that deletes the servers calculation data
+    - [] figure out how to allow the user to click on an old calculation to re-run it in the calculator -- ??????
+    - [x] create a delete button that deletes the servers calculation data
     - [x] add a 'Clear' button that clears the inputs
     - [x] When the `=` button is clicked capture the inputs
     - [x] store inputs in an object to send to the server via POST
